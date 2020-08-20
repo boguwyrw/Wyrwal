@@ -7,8 +7,16 @@ public class PlayerRobotScript : MonoBehaviour
     private bool facingRight = true;
     private bool doubleJump = false;
     private int numberOfJumps = 0;
+	private float playerRobotWalkSpeed = 4.0f;
+	private float playerRobotSpeed = 0.0f;
+	private float playerRobotJumpForce = 420.0f;
 
-    private void Update()
+	private void Start()
+	{
+		playerRobotSpeed = playerRobotWalkSpeed;
+	}
+
+	private void Update()
     {
 		if ((Input.GetKeyDown(KeyCode.A)) && facingRight)
 		{
@@ -29,12 +37,16 @@ public class PlayerRobotScript : MonoBehaviour
 	private void PlayerRobotTurn()
 	{
 		transform.Rotate(Vector3.up * 180);
+
+		PlayerRobotFreezeOnWall();
 	}
 
 	private void PlayerRobotJump()
 	{
 		if ((Input.GetKeyDown(KeyCode.Space)) && !doubleJump)
 		{
+			PlayerRobotFreezeOnWall();
+
 			numberOfJumps++;
 			if (numberOfJumps == 1)
 			{
@@ -45,7 +57,7 @@ public class PlayerRobotScript : MonoBehaviour
 			{
 				numberOfJumps = 0;
 			}
-			GetComponent<Rigidbody2D>().AddForce(transform.up * 400);
+			GetComponent<Rigidbody2D>().AddForce(transform.up * playerRobotJumpForce);
 		}
 	}
 
@@ -53,7 +65,7 @@ public class PlayerRobotScript : MonoBehaviour
 	{
 		if (Input.GetKey(KeyCode.D))
 		{
-			transform.Translate(transform.right * 4 * Time.deltaTime);
+			transform.Translate(transform.right * playerRobotSpeed * Time.deltaTime);
 		}
 	}
 
@@ -61,8 +73,15 @@ public class PlayerRobotScript : MonoBehaviour
 	{
 		if (Input.GetKey(KeyCode.A))
 		{
-			transform.Translate(-transform.right * 4 * Time.deltaTime);
+			transform.Translate(-transform.right * playerRobotSpeed * Time.deltaTime);
 		}
+	}
+
+	private void PlayerRobotFreezeOnWall()
+	{
+		playerRobotSpeed = playerRobotWalkSpeed;
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 	}
 
 	private void OnCollisionEnter2D(Collision2D col)
@@ -70,6 +89,15 @@ public class PlayerRobotScript : MonoBehaviour
 		if (col.gameObject.CompareTag("Ground"))
 		{
 			doubleJump = false;
+		}
+
+		if (col.gameObject.CompareTag("Wall"))
+		{
+			doubleJump = false;
+			numberOfJumps = 0;
+			playerRobotSpeed = 0;
+			GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
+			//Physics2D.gravity = Vector2.zero;
 		}
 	}
 }
