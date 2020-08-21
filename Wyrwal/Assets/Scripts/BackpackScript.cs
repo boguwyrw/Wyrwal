@@ -33,7 +33,7 @@ public class BackpackScript : MonoBehaviour
             }
         }
     }
-
+    /*
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Key"))
@@ -41,4 +41,5 @@ public class BackpackScript : MonoBehaviour
             collision.transform.parent = null;
         }
     }
+    */
 }

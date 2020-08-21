@@ -9,7 +9,7 @@ public class PlayerRobotScript : MonoBehaviour
     private int numberOfJumps = 0;
 	private float playerRobotWalkSpeed = 4.0f;
 	private float playerRobotSpeed = 0.0f;
-	private float playerRobotJumpForce = 420.0f;
+	private float playerRobotJumpForce = 450.0f;
 
 	private void Start()
 	{

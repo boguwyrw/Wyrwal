@@ -8,8 +8,12 @@ public class MainDoorScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Key"))
         {
-            transform.Rotate(0.0f, 0.0f, 90.0f);
-            Destroy(collision.gameObject);
+            if (collision.gameObject.GetComponent<Renderer>().material.color.Equals(transform.GetChild(0).GetComponent<Renderer>().material.color))
+            {
+                transform.Rotate(0.0f, 0.0f, 90.0f);
+                Destroy(collision.gameObject);
+            }
+            Debug.Log(collision.gameObject.GetComponent<Renderer>().material.color);
         }
     }
 }

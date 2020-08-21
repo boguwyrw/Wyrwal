@@ -11,11 +11,10 @@ public class GrabKeySystemScript : MonoBehaviour
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        hit = Physics2D.Raycast(transform.position, new Vector2(mousePosition.x, mousePosition.y));
+        hit = Physics2D.Raycast(new Vector2(mousePosition.x, mousePosition.y), Vector2.zero, 0.0f);
+
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.name);
-
             if (hit.collider.CompareTag("Key"))
             {
                 if (Input.GetMouseButton(0))
