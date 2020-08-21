@@ -5,16 +5,16 @@ using UnityEngine;
 public class CameraFollowsScript : MonoBehaviour
 {
     [SerializeField]
-    private GameObject faceObject;
+    private GameObject playerRobotObject;
     private float distanceZ;
 
     private void Start()
     {
-        distanceZ = faceObject.transform.position.z - transform.position.z;
+        distanceZ = playerRobotObject.transform.position.z - transform.position.z;
     }
 
     private void Update()
     {
-        transform.position = new Vector3(faceObject.transform.position.x, faceObject.transform.position.y, faceObject.transform.position.z - distanceZ);
+        transform.position = new Vector3(playerRobotObject.transform.position.x, playerRobotObject.transform.position.y, playerRobotObject.transform.position.z - distanceZ);
     }
 }

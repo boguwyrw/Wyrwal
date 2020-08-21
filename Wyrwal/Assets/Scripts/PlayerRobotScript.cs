@@ -48,13 +48,9 @@ public class PlayerRobotScript : MonoBehaviour
 			PlayerRobotFreezeOnWall();
 
 			numberOfJumps++;
-			if (numberOfJumps == 1)
-			{
-				doubleJump = true;
-			}
-
 			if (numberOfJumps > 1)
 			{
+				doubleJump = true;
 				numberOfJumps = 0;
 			}
 			GetComponent<Rigidbody2D>().AddForce(transform.up * playerRobotJumpForce);
@@ -80,8 +76,7 @@ public class PlayerRobotScript : MonoBehaviour
 	private void PlayerRobotFreezeOnWall()
 	{
 		playerRobotSpeed = playerRobotWalkSpeed;
-		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-		GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+		GetComponent<Rigidbody2D>().gravityScale = 1.0f;
 	}
 
 	private void OnCollisionEnter2D(Collision2D col)
@@ -96,8 +91,8 @@ public class PlayerRobotScript : MonoBehaviour
 			doubleJump = false;
 			numberOfJumps = 0;
 			playerRobotSpeed = 0;
-			GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
-			//Physics2D.gravity = Vector2.zero;
+			GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		}
 	}
 }
