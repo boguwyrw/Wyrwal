@@ -95,4 +95,10 @@ public class PlayerRobotScript : MonoBehaviour
 			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		}
 	}
+	/*
+	public void SavePlayerRobot()
+	{
+		SaveLoadSystemScript.SavePlayerRobot(this);
+	}
+	*/
 }
