@@ -8,35 +8,20 @@ public class BackpackScript : MonoBehaviour
     private GameObject playerRobotObject;
     private Vector3 distance;
     public string backpackItemName;
-    private bool itemInBackpack;
 
     private void Start()
     {
         distance = playerRobotObject.transform.position - transform.position;
-        itemInBackpack = false;
     }
 
     private void Update()
     {
         transform.position = playerRobotObject.transform.position - distance;
-        if (transform.childCount > 0)
-        {
-            itemInBackpack = true;
-        }
-        else
-        {
-            itemInBackpack = false;
-        }
     }
 
     public string GetBackpackItemName()
     {
         return backpackItemName;
-    }
-
-    public bool GetItemInBackpack()
-    {
-        return itemInBackpack;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
