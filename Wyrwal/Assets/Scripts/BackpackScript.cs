@@ -7,8 +7,8 @@ public class BackpackScript : MonoBehaviour
     [SerializeField]
     private GameObject playerRobotObject;
     private Vector3 distance;
-
-    public bool itemInBackpack;
+    public string backpackItemName;
+    private bool itemInBackpack;
 
     private void Start()
     {
@@ -29,6 +29,16 @@ public class BackpackScript : MonoBehaviour
         }
     }
 
+    public string GetBackpackItemName()
+    {
+        return backpackItemName;
+    }
+
+    public bool GetItemInBackpack()
+    {
+        return itemInBackpack;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Key"))
@@ -41,6 +51,7 @@ public class BackpackScript : MonoBehaviour
             if (transform.childCount > 0)
             {
                 transform.GetChild(0).position = new Vector2(transform.position.x, transform.position.y);
+                backpackItemName = transform.GetChild(0).name;
             }
         }
     }

@@ -13,7 +13,6 @@ public class MainDoorScript : MonoBehaviour
                 transform.Rotate(0.0f, 0.0f, 90.0f);
                 Destroy(collision.gameObject);
             }
-            Debug.Log(collision.gameObject.GetComponent<Renderer>().material.color);
         }
     }
 }

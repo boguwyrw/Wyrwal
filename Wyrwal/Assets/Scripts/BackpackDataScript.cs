@@ -7,10 +7,12 @@ public class BackpackDataScript
 {
     public float[] backpackItemPosition;
     public bool itemIsInBackpack;
+    public string itemInBackpackName;
 
     public BackpackDataScript(BackpackScript backpackScript)
     {
-        itemIsInBackpack = backpackScript.itemInBackpack;
+        itemIsInBackpack = backpackScript.GetItemInBackpack();
+        itemInBackpackName = backpackScript.backpackItemName;
         if (backpackScript.transform.childCount > 0)
         {
             backpackItemPosition = new float[2];
