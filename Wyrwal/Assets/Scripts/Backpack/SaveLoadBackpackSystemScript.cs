@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public static class SaveLoadBackpackItemScript
+public static class SaveLoadBackpackSystemScript
 {
     public static void SaveBackpackItem(BackpackScript backpackScript)
     {
