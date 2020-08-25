@@ -27,12 +27,6 @@ public class SaveLoadBackpackScript : MonoBehaviour
             itemObject.transform.parent = transform;
             itemObject.transform.position = transform.position;
         }
-        /*
-        else
-        {
-            Destroy(itemObject);
-        }
-        */
     }
     
 }

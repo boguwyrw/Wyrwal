@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainDoorScript : MonoBehaviour
 {
-    public string destroyKeyName;
+    public static string destroyKeyName;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,15 +14,8 @@ public class MainDoorScript : MonoBehaviour
             {
                 transform.Rotate(0.0f, 0.0f, 90.0f);
                 destroyKeyName = collision.gameObject.name;
-                Debug.Log("Trigger: " + destroyKeyName);
                 Destroy(collision.gameObject);
             }
         }
     }
-    /*
-    public string GetDestroyKeyName()
-    {
-        return destroyKeyName;
-    }
-    */
 }

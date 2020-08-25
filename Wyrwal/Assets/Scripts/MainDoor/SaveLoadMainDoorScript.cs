@@ -17,7 +17,6 @@ public class SaveLoadMainDoorScript : MonoBehaviour
         MainDoorDataScript mainDoorDataScript = SaveLoadMainDoorSystemScript.LoadMainDoorKey();
 
         keyName = mainDoorDataScript.nameOfKey;
-        Debug.Log(keyName);
         keyObject = GameObject.Find(keyName);
         Destroy(keyObject);
     }

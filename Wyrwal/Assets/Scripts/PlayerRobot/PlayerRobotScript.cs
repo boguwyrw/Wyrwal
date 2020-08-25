@@ -18,12 +18,12 @@ public class PlayerRobotScript : MonoBehaviour
 
 	private void Update()
     {
-		if ((Input.GetKeyDown(KeyCode.A)) && facingRight)
+		if (Input.GetKeyDown(KeyCode.A) && facingRight)
 		{
 			facingRight = false;
 			PlayerRobotTurn();
 		}
-		if ((Input.GetKeyDown(KeyCode.D)) && !facingRight)
+		if (Input.GetKeyDown(KeyCode.D) && !facingRight)
 		{
 			facingRight = true;
 			PlayerRobotTurn();
